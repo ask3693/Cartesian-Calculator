@@ -1,0 +1,101 @@
+#include<iostream>
+using namespace std;
+
+template<typename T>
+void ENTERDATA(T s1[], int size)
+{
+	for(int i=0;i<size;i++)
+	{
+		cin>>s1[i];
+	}
+	/*testing output here: 
+	for(int i=0;i<size;i++)
+	{
+		cout<<s1[i];
+	}
+	*/	
+cout<<endl;
+}
+
+template<typename T,typename S>
+void DOCARTESION(T s1[], int size1,S s2[], int size2)
+{
+	int STOP=0;
+	int OK=size1*size2;
+	for(int i=0;i<size1;i++)
+	{
+		for(int j=0;j<size2;j++)
+		{
+			cout<<"(";
+			cout<<s1[i];
+			cout<<",";
+			cout<<s2[j];
+			cout<<")";
+			STOP++;
+		}
+		if(OK!=STOP)
+		{
+			cout<<", ";	
+		}
+	}
+}
+
+int main()
+{
+cout<<"----------------------Cartesion Product--------------------\n";
+cout<<"\t     Abdullah Mujeeb  and  Hassan Afzal\n";
+system("COLOR C1");
+int n;
+int k;
+int chk=0;
+int chk2=0;
+cout<<"\nEnter number of elements you want in Set 1: ";
+cin>>n;
+cout<<"\nEnter number of elements you want in Set 2: ";
+cin>>k;
+
+cout<<"\nEnter 1 for integer elements in Set 1: ";
+cin>>chk;
+int arrayset1a[n];
+char arrayset1b[n];
+
+if(chk==1)
+{
+ENTERDATA<int>(arrayset1a,n);	
+}else
+{
+ENTERDATA<char>(arrayset1b,n);	
+}
+
+cout<<"\nEnter 1 for integer elements in Set 2: ";
+cin>>chk2;
+int arrayset2a[k];
+char arrayset2b[k];
+
+if(chk2==1)
+{
+ENTERDATA<int>(arrayset2a,k);	
+}else
+{
+ENTERDATA<char>(arrayset2b,k);	
+}
+
+if(chk==1 && chk2==1)
+{
+ 		DOCARTESION<int,int>(arrayset1a,n,arrayset2a,k);
+ 		
+} 	else if(chk==1 && chk2!=1)
+{
+		DOCARTESION<int,char>(arrayset1a,n,arrayset2b,k);
+		
+}	else if(chk!=1 && chk2==1)
+{
+		DOCARTESION<char,int>(arrayset1b,n,arrayset2a,k);
+		
+}	else if(chk!=1 && chk2!=1)
+{
+		DOCARTESION<char,char>(arrayset1b,n,arrayset2b,k);
+}
+
+return 0;	
+}
